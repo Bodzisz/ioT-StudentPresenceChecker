@@ -1,0 +1,1 @@
+create database students_presence_system;
