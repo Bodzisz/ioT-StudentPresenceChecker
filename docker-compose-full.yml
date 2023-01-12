@@ -32,6 +32,17 @@ services:
     volumes:
       - db:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  mqtt:
+    container_name: mqtt
+    image: eclipse-mosquitto:2.0.15
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: always
+
 volumes:
   db:
     driver: local
