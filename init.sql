@@ -11,7 +11,8 @@ CREATE TABLE Users (
     date_of_birth   date, 
     email           varchar(255) NOT NULL, 
     phone_number    varchar(255), 
-    index_number    varchar(6), 
+    index_number    varchar(6),
+    card_number     varchar(255) UNIQUE,  
     discriminator   varchar(1) NOT NULL);
 
 CREATE TABLE Classes (
@@ -23,7 +24,6 @@ CREATE TABLE Classes (
     room_number                 varchar(255) NOT NULL, 
     est_number_of_students      integer, 
     comments                    varchar(255));
-
 
 CREATE TABLE Attendances (
     ID             SERIAL NOT NULL PRIMARY KEY, 
