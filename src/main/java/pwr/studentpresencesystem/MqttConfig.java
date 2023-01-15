@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MqqtConfig {
+public class MqttConfig {
 
     private static final String PUBLISHER_ID = "studentPresenceCheckerApp";
     @Value("${mqtt.url}")

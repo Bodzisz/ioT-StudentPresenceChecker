@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MqqtTest {
+public class MqttTest {
 
     private IMqttClient mqttClient;
 
-    public MqqtTest(IMqttClient mqttClient) {
+    public MqttTest(IMqttClient mqttClient) {
         this.mqttClient = mqttClient;
     }
 
