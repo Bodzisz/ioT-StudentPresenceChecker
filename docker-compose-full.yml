@@ -35,7 +35,7 @@ services:
 
   mqtt:
     container_name: mqtt
-    image: eclipse-mosquitto:2.0.15
+    image: eclipse-mosquitto:2.0.15-openssl
     ports:
       - "1883:1883"
       - "9001:9001"
