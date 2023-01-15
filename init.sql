@@ -1,5 +1,3 @@
-CREATE DATABASE students_presence_system;
-
 CREATE TABLE Users (
     ID              SERIAL PRIMARY KEY, 
     login           varchar(255) NOT NULL UNIQUE, 
