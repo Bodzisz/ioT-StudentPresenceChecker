@@ -10,8 +10,7 @@ CREATE TABLE Users (
     email           varchar(255) NOT NULL, 
     phone_number    varchar(255), 
     index_number    varchar(6),
-    card_number     varchar(255) UNIQUE,  
-    discriminator   varchar(1) NOT NULL);
+    card_number     varchar(255) UNIQUE);
 
 CREATE TABLE Classes (
     ID                          SERIAL PRIMARY KEY, 
