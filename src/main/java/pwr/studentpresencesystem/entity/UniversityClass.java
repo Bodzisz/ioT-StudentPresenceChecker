@@ -1,20 +1,25 @@
 package pwr.studentpresencesystem.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "classes")
 public class UniversityClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne
     @JoinColumn(name = "FK_TeacherID")
     private User teacher;
@@ -26,15 +31,6 @@ public class UniversityClass {
     private int numberOfStudents;
     private String comments;
     @OneToMany(mappedBy = "universityClass")
+    @ToString.Exclude
     private Set<Attendance> attendances;
-
-    public UniversityClass(User teacher, String name, LocalDateTime startTime, LocalDateTime endTime, String roomNumber, int numberOfStudents, String comments) {
-        this.teacher = teacher;
-        this.name = name;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.roomNumber = roomNumber;
-        this.numberOfStudents = numberOfStudents;
-        this.comments = comments;
-    }
 }

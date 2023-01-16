@@ -1,6 +1,8 @@
 package pwr.studentpresencesystem.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +10,8 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "attendances")
 public class Attendance {
@@ -24,11 +28,4 @@ public class Attendance {
     private LocalDateTime leavingTime;
     private String comments;
 
-    public Attendance(User student, UniversityClass universityClass, LocalDateTime comingTime, LocalDateTime leavingTime, String comments) {
-        this.student = student;
-        this.universityClass = universityClass;
-        this.comingTime = comingTime;
-        this.leavingTime = leavingTime;
-        this.comments = comments;
-    }
 }
