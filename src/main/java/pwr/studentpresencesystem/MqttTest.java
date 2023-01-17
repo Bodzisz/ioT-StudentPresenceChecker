@@ -33,7 +33,9 @@ public class MqttTest {
 
     @GetMapping("/send")
     public String sendMessage() {
-        String message = "56414964923 2023-01-10 20:10:39";
+        String message = "56414964923";
+        String message2 = "1022787718182";
+        String kubyLegitka = "954038355942";
         byte[] payload = message.getBytes();
         MqttMessage msg = new MqttMessage(payload);
         msg.setQos(0);

@@ -33,7 +33,7 @@ public class MqttConfig {
         } catch (MqttException e) {
             log.error(e.getMessage());
         }
-        mqttClient.subscribe(PUBLISHER_ID, (topic, message) -> {
+        mqttClient.subscribe("test/rfid", (topic, message) -> {
             log.info("Received message: " + new String(message.getPayload()));
             attendanceService.saveAttendance(new String(message.getPayload()));
         });

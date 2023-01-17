@@ -19,11 +19,7 @@ public class AttendanceService {
     private final UserService userService;
 
     public void saveAttendance(String payload) {
-        System.out.println("Saving");
-        String[] payloadSplit = payload.split(" ");
-        String id = payloadSplit[0];
-       // String date = payloadSplit[1] + payloadSplit[2];
-        Optional<User> userByCardNumber = userService.findUserByCardNumber(id);
+        Optional<User> userByCardNumber = userService.findUserByCardNumber(payload);
         if (userByCardNumber.isEmpty())
             return;
 
