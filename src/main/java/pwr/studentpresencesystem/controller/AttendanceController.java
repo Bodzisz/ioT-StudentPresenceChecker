@@ -1,9 +1,11 @@
 package pwr.studentpresencesystem.controller;
 
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+//username - student, password - password
+//username - teacher, password - password
 
 @Controller
 public class AttendanceController {
