@@ -3,13 +3,11 @@ CREATE TABLE Users (
     login           varchar(255) NOT NULL UNIQUE, 
     password        varchar(255) NOT NULL, 
     name            varchar(255) NOT NULL, 
-    surname         varchar(255) NOT NULL, 
-    pesel           varchar(11), 
+    surname         varchar(255) NOT NULL,
     gender          varchar(1),
     role            varchar(255),
     date_of_birth   date, 
-    email           varchar(255) NOT NULL, 
-    phone_number    varchar(255), 
+    email           varchar(255) NOT NULL,
     index_number    varchar(6),
     card_number     varchar(255) UNIQUE);
 

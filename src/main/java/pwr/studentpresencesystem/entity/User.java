@@ -27,14 +27,12 @@ public class User implements UserDetails {
     private String password;
     private String name;
     private String surname;
-    private String pesel;
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
     @Enumerated(value = EnumType.STRING)
     private Role role;
     private Date date_of_birth;
     private String email;
-    private String phoneNumber;
     private String indexNumber;
     private String cardNumber;
     @ToString.Exclude
