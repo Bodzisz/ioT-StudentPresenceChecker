@@ -25,6 +25,7 @@ public class UniversityClass {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String roomNumber;
+    private boolean active;
     @Column(name = "est_number_of_students")
     private int numberOfStudents;
     private String comments;

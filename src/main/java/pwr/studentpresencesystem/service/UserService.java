@@ -21,4 +21,8 @@ public class UserService {
     public Optional<User> findUserByCardNumber(String cardNumber) throws EntityNotFoundException {
         return userRepository.findByCardNumber(cardNumber);
     }
+
+    public Optional<User> findUserByLogin(final String login) {
+        return userRepository.findByLogin(login);
+    }
 }

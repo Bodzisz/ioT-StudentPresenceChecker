@@ -35,7 +35,7 @@ public class MqttConfig {
         }
         mqttClient.subscribe("test/rfid", (topic, message) -> {
             log.info("Received message: " + new String(message.getPayload()));
-            attendanceService.saveAttendance(new String(message.getPayload()));
+//            attendanceService.saveAttendance(new String(message.getPayload()));
         });
         return mqttClient;
     }

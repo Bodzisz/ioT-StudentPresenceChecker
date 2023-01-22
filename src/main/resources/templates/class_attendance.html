@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
-<h1>Attendances</h1>
+
+<div>
+    <p th:text="|active: ${class.active}|"></p>
+</div>
+
+<div>
+    <a th:href="@{/class/{id}/activate(id=${class.id})}"
+       th:if="${showActivateButton} == true">
+        <button class="btn-primary">Activate</button>
+    </a>
+    <a th:href="@{/class/{id}/deactivate(id=${class.id})}" th:if="${showEndButton} == true">
+        <button class="btn-primary">End</button>
+    </a>
+</div>
+
+<div>
+    <h2>Attendances:</h2>
+</div>
+
+<div>
+    <ul th:each="attendance : ${attendances}" class="list-group">
+        <li th:text="${attendance.getStudent().name}" class="list-group-item">
+    </ul>
+</div>
+
+
 </body>
 </html>
