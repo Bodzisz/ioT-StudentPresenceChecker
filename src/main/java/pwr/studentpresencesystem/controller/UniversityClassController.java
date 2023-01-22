@@ -1,5 +1,7 @@
 package pwr.studentpresencesystem.controller;
 
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,12 @@ public class UniversityClassController {
     }
 
     @GetMapping("/class/show/{id}")
-    public String getClassAttendance(@PathVariable("id") final int id, final Model model) {
+    public String getClassAttendance(@PathVariable("id") final int id, final Model model,
+                                     final Principal principal) {
         final UniversityClass clazz = universityClassService.getClassById(id);
+        if(!clazz.getTeacher().getLogin().equals(principal.getName())) {
+            throw new AccessDeniedException("You cannot access this page");
+        }
         final Set<Attendance> attendances = clazz.getAttendances();
         boolean showActivateButton = !clazz.isActive() && clazz.getEndTime() == null;
         boolean showEndButton = clazz.isActive();
@@ -40,9 +46,11 @@ public class UniversityClassController {
     }
 
     @GetMapping("/class/{id}/activate")
-    public String activateClass(@PathVariable("id") final int id) {
-        System.out.println(universityClassService.doesActiveClassExist());
+    public String activateClass(@PathVariable("id") final int id, final Principal principal) {
         final UniversityClass clazz = universityClassService.getClassById(id);
+        if(!clazz.getTeacher().getLogin().equals(principal.getName())) {
+            throw new AccessDeniedException("You cannot access this page");
+        }
         if(!universityClassService.doesActiveClassExist() &&
                 clazz.getEndTime() == null) {
             clazz.setActive(true);
@@ -52,8 +60,11 @@ public class UniversityClassController {
     }
 
     @GetMapping("/class/{id}/deactivate")
-    public String endClass(@PathVariable("id") final int id) {
+    public String endClass(@PathVariable("id") final int id, final Principal principal) {
         final UniversityClass clazz = universityClassService.getClassById(id);
+        if(!clazz.getTeacher().getLogin().equals(principal.getName())) {
+            throw new AccessDeniedException("You cannot access this page");
+        }
         clazz.setActive(false);
         clazz.setEndTime(LocalDateTime.now());
         universityClassService.update(clazz);
@@ -61,8 +72,9 @@ public class UniversityClassController {
     }
 
     @GetMapping("/classes")
-    public String getClasses(final Model model) {
-        model.addAttribute("classes", universityClassService.getClassesList());
+    public String getClasses(final Model model, final Principal principal) {
+        model.addAttribute("classes",
+                universityClassService.getTeachersClasses(principal.getName()));
         return "classes";
     }
 

@@ -44,4 +44,8 @@ public class UniversityClassService {
     public Optional<UniversityClass> getActiveClass() {
         return classRepository.findAllByActiveIsTrue();
     }
+
+    public List<UniversityClass> getTeachersClasses(final String login) {
+        return classRepository.findAllByTeacherLogin(login);
+    }
 }

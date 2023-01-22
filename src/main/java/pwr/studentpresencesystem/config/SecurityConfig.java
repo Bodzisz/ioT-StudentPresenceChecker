@@ -18,6 +18,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/class/**").hasAuthority("ROLE_TEACHER")
+                .requestMatchers("/classes").hasAuthority("ROLE_TEACHER")
                 .requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
                 .anyRequest().authenticated()
                 .and()
