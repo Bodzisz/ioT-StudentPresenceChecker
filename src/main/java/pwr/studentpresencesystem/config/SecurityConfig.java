@@ -17,9 +17,10 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests()
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/class/**").hasAuthority("ROLE_TEACHER")
-                .requestMatchers("/classes").hasAuthority("ROLE_TEACHER")
-                .requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
+                .requestMatchers("/register").permitAll()
+                .requestMatchers("/class/**").hasRole("TEACHER")
+                .requestMatchers("/classes").hasRole("TEACHER")
+                .requestMatchers("/attendances/**").hasRole("STUDENT")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

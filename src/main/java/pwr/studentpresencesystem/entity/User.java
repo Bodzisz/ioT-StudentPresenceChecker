@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,7 @@ public class User implements UserDetails {
     private Gender gender;
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_of_birth;
     private String email;
     private String indexNumber;
