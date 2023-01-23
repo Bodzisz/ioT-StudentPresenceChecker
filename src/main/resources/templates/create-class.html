@@ -28,14 +28,14 @@
 
     <div class="container mt-5">
         <h1>Create classes</h1>
-        <form class="row g-3 justify-content-center mx-lg-5 mx-md-0 mt-3">
+        <form class="row g-3 justify-content-center mx-lg-5 mx-md-0 mt-3" method="post" th:object="${class}">
             <div class="col-md-12">
                 <label for="name" class="form-label">Classes name:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Introduction to IoT 2023-01-31 18:55" required>
+                <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="e.g. Introduction to IoT 2023-01-31 18:55" required>
             </div>
             <div class="col-md-4">
                 <label for="room" class="form-label">Room number:</label>
-                <input type="text" class="form-control" id="room" name="room" placeholder="e.g. 333b/D2" required>
+                <input type="text" th:field="*{roomNumber}" class="form-control" id="room" name="room" placeholder="e.g. 333b/D2" required>
             </div>
             <div class="col-sm-6 col-md-4">
                 <label for="delay" class="form-label">Set delay since:</label>
@@ -43,11 +43,11 @@
             </div>
             <div class="col-sm-6 col-md-4">
                 <label for="students-number" class="form-label">Estimated number of students:</label>
-                <input type="number" class="form-control" id="students-number" name="students-number" min="0">
+                <input type="number" th:field="*{numberOfStudents}" class="form-control" id="students-number" name="students-number" min="0">
             </div>
             <div class="col-md-12 mb-3">
                 <label for="comments" class="form-label">Comments:</label>
-                <textarea class="form-control" id="comments" name="comments" rows="7"></textarea>
+                <textarea class="form-control" th:field="*{comments}" id="comments" name="comments" rows="7"></textarea>
             </div>
             <div class="col-md-12" style="text-align: center;">
                 <button class="btn btn-secondary btn-lg btn-block" style="margin-right: 1.8vw; width: 150px;">Go back</button>

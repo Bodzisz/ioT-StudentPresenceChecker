@@ -24,6 +24,7 @@ public class MqttTest {
             options.setAutomaticReconnect(true);
             options.setCleanSession(true);
             options.setConnectionTimeout(10);
+
             mqttClient.connect(options);
             return "CONNECTED";
         } catch (MqttException e) {
