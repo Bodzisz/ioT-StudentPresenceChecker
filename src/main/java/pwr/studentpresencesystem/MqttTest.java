@@ -34,13 +34,14 @@ public class MqttTest {
 
     @GetMapping("/send")
     public String sendMessage() {
-        String message = "954038355942";
+//        String message = "954038355942";
+        String message = "56414964923";
         byte[] payload = message.getBytes();
         MqttMessage msg = new MqttMessage(payload);
         msg.setQos(0);
         msg.setRetained(true);
         try {
-            mqttClient.publish("studentPresenceCheckerApp", msg);
+            mqttClient.publish("test/rfid", msg);
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }

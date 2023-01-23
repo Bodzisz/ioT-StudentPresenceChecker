@@ -19,7 +19,7 @@ public class AttendanceController {
     @GetMapping("/attendances")
     public String getStudentAttendance(final Principal principal, Model model) {
         List<Attendance> studentAttendances = attendanceService.getStudentAttendances(principal);
-        model.addAttribute("attendanceList", studentAttendances);
+        model.addAttribute("attendancesList", studentAttendances);
         return "student_attendance";
     }
 }

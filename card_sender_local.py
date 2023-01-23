@@ -24,6 +24,7 @@ def connect_to_broker():
     client.connect(broker)
     # Send message about conenction.
     call_worker("Client connected")
+    print("Client connected")
 
 
 def disconnect_from_broker():
@@ -59,4 +60,4 @@ if __name__ == "__main__":
             start_time = datetime.now()
             message = f'{card_rfid}'
             print(message)
-            call_worker(str(card_rfid) + " " + str(start_time))
+            call_worker(str(card_rfid))

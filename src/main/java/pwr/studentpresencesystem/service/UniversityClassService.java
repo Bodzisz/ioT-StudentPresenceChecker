@@ -6,6 +6,7 @@ import pwr.studentpresencesystem.entity.UniversityClass;
 import pwr.studentpresencesystem.repository.UniversityClassRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class UniversityClassService {
     private final UniversityClassRepository classRepository;
 
     public void save(final UniversityClass universityClass) {
-        universityClass.setAttendances(new HashSet<>());
+        universityClass.setAttendances(new ArrayList<>());
         universityClass.setStartTime(LocalDateTime.now());
         universityClass.setNumberOfStudents(0);
         universityClass.setActive(false);

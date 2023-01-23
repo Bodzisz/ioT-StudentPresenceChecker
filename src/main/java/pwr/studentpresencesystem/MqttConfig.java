@@ -29,11 +29,13 @@ public class MqttConfig {
             options.setAutomaticReconnect(true);
             options.setCleanSession(true);
             options.setConnectionTimeout(10);
+            options.setKeepAliveInterval(10);
             mqttClient.connect(options);
         } catch (MqttException e) {
             log.error(e.getMessage());
         }
         mqttClient.subscribe("test/rfid", (topic, message) -> {
+            if (new String(message.getPayload()).equals("Client connected")) return;
             log.info("Received message: " + new String(message.getPayload()));
             attendanceService.saveAttendance(new String(message.getPayload()));
         });

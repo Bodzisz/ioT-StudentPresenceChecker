@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -31,5 +32,5 @@ public class UniversityClass {
     private String comments;
     @OneToMany(mappedBy = "universityClass")
     @ToString.Exclude
-    private Set<Attendance> attendances;
+    private List<Attendance> attendances;
 }

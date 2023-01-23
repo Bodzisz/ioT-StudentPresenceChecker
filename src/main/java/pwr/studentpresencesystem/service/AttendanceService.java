@@ -26,12 +26,23 @@ public class AttendanceService {
         if (userByCardNumber.isEmpty() || activeClass.isEmpty())
             throw new RuntimeException();
 
-        Attendance attendance = Attendance.builder()
-                .student(userByCardNumber.get())
-                .comingTime(LocalDateTime.now())
-                .universityClass(activeClass.get())
-                .build();
-        attendanceRepository.save(attendance);
+        Optional<Attendance> attendance = attendanceRepository
+                .findByStudentAndUniversityClass(userByCardNumber.get(), activeClass.get());
+
+        if (attendance.isEmpty()) {
+            Attendance newAttendance = Attendance.builder()
+                    .student(userByCardNumber.get())
+                    .comingTime(LocalDateTime.now())
+                    .universityClass(activeClass.get())
+                    .build();
+            attendanceRepository.save(newAttendance);
+        }
+
+        if (attendance.isPresent() && attendance.get().getLeavingTime() == null) {
+            attendance.get().setLeavingTime(LocalDateTime.now());
+            attendanceRepository.save(attendance.get());
+        }
+
     }
 
     public List<Attendance> getStudentAttendances(final Principal principal) {

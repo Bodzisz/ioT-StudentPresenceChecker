@@ -1,5 +1,6 @@
 package pwr.studentpresencesystem.controller;
 
+import jakarta.persistence.metamodel.ListAttribute;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import pwr.studentpresencesystem.service.UserService;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -35,7 +38,7 @@ public class UniversityClassController {
         if(!clazz.getTeacher().getLogin().equals(principal.getName())) {
             throw new AccessDeniedException("You cannot access this page");
         }
-        final Set<Attendance> attendances = clazz.getAttendances();
+        final List<Attendance> attendances = clazz.getAttendances();
         boolean showActivateButton = !clazz.isActive() && clazz.getEndTime() == null;
         boolean showEndButton = clazz.isActive();
         model.addAttribute("class", clazz);
