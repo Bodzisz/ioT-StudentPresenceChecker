@@ -3,36 +3,73 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Classes attendance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        html, body{
+            margin:0;
+            padding:0;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" style="padding-left: 0.8em; padding-right: 0.8em;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Students' Presence Checker System&reg;</a>
+            <span class="text-md-right" style="font-size: 1.2em;">
+                <i class="bi bi-person-circle fa-lg"></i>
+                Krzysztof Chudzik
+                <button type="button" class="btn btn-outline-secondary" style="margin-left: .4em;">Log out</button>
+            </span>
+        </div>
+    </nav>
 
-<div>
-    <p th:text="|active: ${class.active}|"></p>
-</div>
+    <div class="container">
+        <div>
+            <p th:text="|active: ${class.active}|"></p>
+        </div>
+    
+        <div>
+            <a th:href="@{/class/{id}/activate(id=${class.id})}"
+            th:if="${showActivateButton} == true">
+                <button class="btn btn-primary">Activate</button>
+            </a>
+            <a th:href="@{/class/{id}/deactivate(id=${class.id})}" th:if="${showEndButton} == true">
+                <button class="btn btn-danger">End</button>
+            </a>
+        </div>
+    
+        <div class="my-3">
+            <h2 th:text="|Attendances: ${class.name}|"></h2>
+        </div>
 
-<div>
-    <a th:href="@{/class/{id}/activate(id=${class.id})}"
-       th:if="${showActivateButton} == true">
-        <button class="btn-primary">Activate</button>
-    </a>
-    <a th:href="@{/class/{id}/deactivate(id=${class.id})}" th:if="${showEndButton} == true">
-        <button class="btn-primary">End</button>
-    </a>
-</div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Name</th>
+                <th scope="col">Index</th>
+                <th scope="col">Date of entry</th>
+                <th scope="col">Date of leaving</th>
+                <th scope="col">Late?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="attendance : ${attendances}">
+                <th scope="row" th:text="${attendance.id}"></th>
+                <td th:text="${attendance.getStudent().surname}"></td>
+                <td th:text="${attendance.getStudent().name}"></td>
+                <td th:text="${attendance.getStudent().indexNumber}"></td>
+                <td th:text="${attendance.comingTime}"></td>
+                <td th:text="${attendance.leavingTime}"></td>
+                <td th:text="${attendance.isLate}"></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 
-<div>
-    <h2>Attendances:</h2>
-</div>
-
-<div>
-    <ul th:each="attendance : ${attendances}" class="list-group">
-        <li th:text="${attendance.getStudent().name}" class="list-group-item">
-    </ul>
-</div>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
