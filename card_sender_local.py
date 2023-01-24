@@ -21,7 +21,8 @@ def call_worker(worker_name):
 
 def connect_to_broker():
     # Connect to the broker.
-    client.connect(broker, keepalive=10000)
+    client.connect(broker, keepalive=60)
+    client.loop_start()
     # Send message about conenction.
     call_worker("Client connected")
     print("Client connected")
@@ -32,6 +33,7 @@ def disconnect_from_broker():
     call_worker("Client disconnected")
     # Disconnet the client.
     client.disconnect()
+    client.loop_stop()
     print("DISCONNECTED")
 
 def rfidRead():
