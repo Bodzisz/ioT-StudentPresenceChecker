@@ -46,7 +46,7 @@ public class AttendanceService {
     }
 
     public List<Attendance> getStudentAttendances(final Principal principal) {
-        return attendanceRepository.findAllByStudent_Name(principal.getName());
+        return attendanceRepository.findAllByStudentLogin(principal.getName());
     }
 
 }

@@ -17,9 +17,9 @@ public class AttendanceController {
     private final AttendanceService attendanceService;
 
     @GetMapping("/attendances")
-    public String getStudentAttendance(final Principal principal, Model model) {
+    public String getStudentAttendance(final Principal principal, final Model model) {
         List<Attendance> studentAttendances = attendanceService.getStudentAttendances(principal);
-        model.addAttribute("attendancesList", studentAttendances);
+        model.addAttribute("attendances", studentAttendances);
         return "student_attendance";
     }
 }

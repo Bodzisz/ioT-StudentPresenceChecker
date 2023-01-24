@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance, Integer> {
 
-    List<Attendance> findAllByStudent_Name(String name);
+    List<Attendance> findAllByStudentLogin(String login);
 
     Optional<Attendance> findByStudentAndUniversityClass(User student, UniversityClass universityClass);
 }

@@ -6,5 +6,11 @@
 </head>
 <body>
 <h>Student attendance</h>
+
+<div>
+    <ul th:each="attendance : ${attendances}" class="list-group">
+        <li th:text="${attendance.getUniversityClass().getName()}" class="list-group-item">
+    </ul>
+</div>
 </body>
 </html>
