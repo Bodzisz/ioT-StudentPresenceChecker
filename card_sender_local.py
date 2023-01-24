@@ -21,7 +21,7 @@ def call_worker(worker_name):
 
 def connect_to_broker():
     # Connect to the broker.
-    client.connect(broker)
+    client.connect(broker, keepalive=10000)
     # Send message about conenction.
     call_worker("Client connected")
     print("Client connected")

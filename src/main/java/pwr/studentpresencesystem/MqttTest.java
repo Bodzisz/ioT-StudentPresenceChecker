@@ -23,7 +23,7 @@ public class MqttTest {
             MqttConnectOptions options = new MqttConnectOptions();
             options.setAutomaticReconnect(true);
             options.setConnectionTimeout(10000);
-
+            options.setKeepAliveInterval(10000);
             mqttClient.connect(options);
             return "CONNECTED";
         } catch (MqttException e) {

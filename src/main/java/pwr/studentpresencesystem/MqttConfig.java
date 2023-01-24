@@ -29,6 +29,7 @@ public class MqttConfig {
             options.setAutomaticReconnect(true);
             options.setCleanSession(false);
             options.setConnectionTimeout(10000);
+            options.setKeepAliveInterval(10000);
             mqttClient.connect(options);
         } catch (MqttException e) {
             log.error(e.getMessage());
