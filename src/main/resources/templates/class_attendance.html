@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Classes attendance</title>
@@ -17,11 +18,13 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" style="padding-left: 0.8em; padding-right: 0.8em;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Students' Presence Checker System&reg;</a>
-            <span class="text-md-right" style="font-size: 1.2em;">
+            <div class="text-md-right" style="font-size: 1.2em;" sec:authorize="isAuthenticated()">
                 <i class="bi bi-person-circle fa-lg"></i>
-                Krzysztof Chudzik
-                <button type="button" class="btn btn-outline-secondary" style="margin-left: .4em;">Log out</button>
-            </span>
+                <span th:text="|${#authentication.principal.name} ${#authentication.principal.surname}|"></span>
+                <a th:href="@{/logout}">
+                    <button type="button" class="btn btn-outline-secondary" style="margin-left: .4em;">Log out</button>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -53,7 +56,7 @@
                 <th scope="col">Index</th>
                 <th scope="col">Date of entry</th>
                 <th scope="col">Date of leaving</th>
-                <th scope="col">Late?</th>
+<!--                <th scope="col">Late?</th>-->
               </tr>
             </thead>
             <tbody>
@@ -64,7 +67,7 @@
                 <td th:text="${attendance.getStudent().indexNumber}"></td>
                 <td th:text="${attendance.comingTime}"></td>
                 <td th:text="${attendance.leavingTime}"></td>
-                <td th:text="${attendance.isLate}"></td>
+<!--                <td th:text="${attendance.isLate}"></td>-->
               </tr>
             </tbody>
           </table>

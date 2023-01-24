@@ -11,7 +11,7 @@ import atexit
 isReaded = False
 MIFAREReader = MFRC522()
 pixels = neopixel.NeoPixel(
-        board.D18, 8, brightness=1.0/32, auto_write=False)
+    board.D18, 8, brightness=1.0/32, auto_write=False)
 card_rfid = ""
 
 # The terminal ID - can be any string.
@@ -25,7 +25,7 @@ broker = "10.108.33.23"
 client = mqtt.Client()
 
 def call_worker(worker_name):
-    client.publish("test/rfid", worker_name + "." + terminal_id,)
+    client.publish("test/rfid", worker_name)
 
 def connect_to_broker():
     # Connect to the broker.
@@ -98,7 +98,7 @@ if __name__ == "__main__":
             buzzer(True)
             message = f'{card_rfid}'
             print(message)
-            call_worker(str(card_rfid) + " " + str(start_time))
+            call_worker(str(card_rfid))
             #print(f"Date: {curr_date} ")
         if buzzing:
             if start_time + timedelta(seconds=buzz_time) < datetime.now():

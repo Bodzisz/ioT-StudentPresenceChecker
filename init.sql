@@ -24,7 +24,7 @@ CREATE TABLE Classes (
 
 CREATE TABLE Attendances (
     ID             SERIAL NOT NULL PRIMARY KEY, 
-    FK_ClassesID   integer NOT NULL REFERENCES Users, 
+    FK_ClassesID   integer NOT NULL REFERENCES Classes,
     FK_StudentID   integer NOT NULL REFERENCES Users, 
     coming_time    timestamp NOT NULL, 
     leaving_time   timestamp, 

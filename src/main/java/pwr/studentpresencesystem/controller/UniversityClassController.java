@@ -86,9 +86,10 @@ public class UniversityClassController {
     @PostMapping("/class/create")
     public String createClass(final UniversityClass universityClass,
                               final Principal principal) {
-        System.out.println(universityClass);
+
         final User teacher = userService.findUserByLogin(principal.getName())
                 .orElseThrow(RuntimeException::new);
+        System.out.println(universityClass);
         universityClass.setTeacher(teacher);
         universityClassService.save(universityClass);
 

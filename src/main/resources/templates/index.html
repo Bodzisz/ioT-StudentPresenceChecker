@@ -47,6 +47,11 @@
                 <button type="button" class="btn btn-primary btn-lg btn-block">Show my classes</button>
             </a>
         </div>
+        <div class="button-container">
+            <a th:href="@{/attendances}" sec:authorize="hasRole('STUDENT')">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Show attendances</button>
+            </a>
+        </div>
         <div class="button-container" sec:authorize="isAuthenticated()">
             <a th:href="@{/logout}">
                 <button type="button" class="btn btn-secondary btn-lg btn-block">Log out</button>
