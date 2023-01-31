@@ -18,7 +18,7 @@
 <body class="bg-light">
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" style="padding-left: 0.8em; padding-right: 0.8em;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Students' Presence Checker System&reg;</a>
+        <a class="navbar-brand" href="/">Students' Presence Checker System&reg;</a>
         <div class="text-md-right" style="font-size: 1.2em;" sec:authorize="isAuthenticated()">
             <i class="bi bi-person-circle fa-lg"></i>
             <span th:text="|${#authentication.principal.name} ${#authentication.principal.surname}|"></span>

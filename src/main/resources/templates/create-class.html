@@ -18,7 +18,7 @@
 <body class="bg-light">
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" style="padding-left: 0.8em; padding-right: 0.8em;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Students' Presence Checker System&reg;</a>
+            <a class="navbar-brand" href="/">Students' Presence Checker System&reg;</a>
             <div class="text-md-right" style="font-size: 1.2em;" sec:authorize="isAuthenticated()">
                 <i class="bi bi-person-circle fa-lg"></i>
                 <span th:text="|${#authentication.principal.name} ${#authentication.principal.surname}|"></span>
@@ -41,7 +41,7 @@
                 <input type="text" th:field="*{roomNumber}" class="form-control" id="room" name="room" placeholder="e.g. 333b/D2" required>
             </div>
             <div class="col-sm-6 col-md-4">
-                <label for="delay" class="form-label">Set delay since:</label>
+                <label for="delay" class="form-label">Start time:</label>
                 <input type="datetime-local" class="form-control" id="delay" name="delay">
             </div>
             <div class="col-sm-6 col-md-4">

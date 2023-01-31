@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @NoArgsConstructor
@@ -27,4 +28,11 @@ public class Attendance {
     private LocalDateTime leavingTime;
     private String comments;
 
+    public String getFormattedComingTime() {
+        return comingTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+    }
+
+    public String getFormattedLeavingTime() {
+        return leavingTime != null ? leavingTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")) : "";
+    }
 }
